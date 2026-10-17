@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f1e8" />
+    <title>Point Taken — a tiny scorecard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="topbar">
+        <div class="brand"><span class="brand-mark">✳</span> POINT TAKEN</div>
+        <div class="live-pill"><span></span> LOCAL MODE</div>
+      </nav>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">THE OFFICIAL SCORECARD</p>
+          <h1>Keep score.<br /><em>Keep it playful.</em></h1>
+          <p class="hero-text">She gives you a point when you earn it — or takes one away when you absolutely do not.</p>
+        </div>
+        <div class="hero-doodle" aria-hidden="true">
+          <div class="scribble">for the<br /><span>record</span> ↗</div>
+          <div class="sun">☼</div>
+        </div>
+      </section>
+
+      <section class="score-card">
+        <div class="score-heading">
+          <div>
+            <p class="label">CURRENT SCORE</p>
+            <div class="score-line"><strong id="score">42</strong><span>pts</span></div>
+          </div>
+          <div class="streak"><span class="streak-dot">✦</span><div><small>CHEMISTRY STREAK</small><b id="streak">7 days</b></div></div>
+        </div>
+        <div class="meter"><div id="meter-fill"></div></div>
+        <div class="score-foot"><span id="score-note">A remarkably respectable human.</span><span id="score-updated">Updated just now</span></div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="panel give-panel">
+          <div class="panel-header"><div><p class="label">MAKE A RULING</p><h2>Give or take points</h2></div><span class="panel-number">01</span></div>
+          <form id="point-form">
+            <div class="field-group">
+              <label>WHO IS BEING SCORED?</label>
+              <input id="friend-name" value="You" aria-label="Name being scored" />
+            </div>
+            <div class="field-group">
+              <label>WHAT HAPPENED?</label>
+              <div class="category-grid" id="category-grid">
+                <button type="button" class="category active" data-category="Funny" data-icon="☻"><span>☻</span> Funny</button>
+                <button type="button" class="category" data-category="Cringe funny" data-icon="◌"><span>◌</span> Cringe funny</button>
+                <button type="button" class="category" data-category="Handsome" data-icon="✦"><span>✦</span> Handsome</button>
+                <button type="button" class="category" data-category="Kind" data-icon="♡"><span>♡</span> Kind</button>
+                <button type="button" class="category" data-category="Helpful" data-icon="↗"><span>↗</span> Helpful</button>
+                <button type="button" class="category" data-category="Unhinged" data-icon="!?"><span>!?</span> Unhinged</button>
+                <button type="button" class="category" data-category="Sexy" data-icon="♢"><span>♢</span> Sexy</button>
+                <button type="button" class="category" data-category="Flirty" data-icon="~"><span>~</span> Flirty</button>
+                <button type="button" class="category" data-category="Heart-stealer" data-icon="♥"><span>♥</span> Heart-stealer</button>
+                <button type="button" class="category" data-category="Hot" data-icon="✹"><span>✹</span> Hot</button>
+              </div>
+            </div>
+            <div class="field-group amount-group"><label for="amount">HOW MANY POINTS?</label><input id="amount" type="number" min="1" max="10" value="1" aria-label="Point amount" /></div>
+            <div class="field-group"><label>THE REASON <span>(required)</span></label><textarea id="reason" placeholder="e.g. made me laugh in a difficult meeting"></textarea></div>
+            <div class="action-row"><button class="action give" type="submit" data-change="1">+ Give a point</button><button class="action take" type="submit" data-change="-1">− Take a point</button></div>
+          </form>
+        </div>
+
+        <div class="panel activity-panel">
+          <div class="panel-header"><div><p class="label">THE PAPER TRAIL</p><h2>Recent rulings</h2></div><span class="panel-number">02</span></div>
+          <div id="activity-list" class="activity-list"></div>
+          <button id="clear-button" class="clear-button" type="button">Clear history <span>↗</span></button>
+        </div>
+      </section>
+
+      <footer><span>Made for keeping score.</span><span>GOOD ENERGY <b>♡</b></span></footer>
+    </main>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
